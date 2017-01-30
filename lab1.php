@@ -10,13 +10,13 @@
 
 <?php
 
-$conn = new PDO('mysql:host=127.0.0.1;dbname=hockey_teams', 'root', 'cannon19');
+$conn = new PDO('mysql:host=ca-cdbr-azure-central-a.cloudapp.net;dbname=comp1006jessecannondatabase', 'bf3c946f4d66ff', '1d953141');
 
-$sql ="SELECT teamsId, city, nickname, division FROM teams ORDER BY city";
+$sql ="SELECT city, nickname, division FROM teams";
 
 $cmd = $conn->prepare($sql);
 $cmd->execute();
-$albums = $cmd->fetchALL(); 
+$teams = $cmd->fetchALL(); 
 
 echo '<table class="table table-striped table-hover"><tr><th>City</th><th>Nickname</th><th>Division</th></tr>';
 
@@ -27,7 +27,7 @@ foreach ($teams as $team) {
         <td>' . $team['division'] . '</td></tr>';
 }
 
-$conn = null;
+$conn = null; 
 ?>
 
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
